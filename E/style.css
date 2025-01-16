@@ -1,0 +1,142 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #606060;
+    height: 9.6rem;
+    padding: 0 4.8rem;
+}
+
+
+.main-nav {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1; /* Take up remaining space */
+  }
+  
+  .main-nav-list {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  
+  .main-nav-list li {
+    margin-right: 2rem; /* Add some space between list items */
+  }
+  
+
+  .name {
+    color: white;
+    font-size: 2rem;
+    display: flex; /* Align items horizontally */
+    align-items: center; /* Vertically align the icon with the text */
+  }
+
+  .name:hover svg {
+    transform: scale(1.1); /* Slightly enlarge the icon on hover */
+  }
+  
+  .name:hover {
+    color: #C0C0C0; /* Change text color on hover */
+  }
+  
+
+  .sticky .header {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 8rem;
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: rgb(255, 255, 255, 0.97);
+    z-index: 999;
+    box-shadow: 0 1.2rem 3.2rem rgba(0,0,0,0.03);
+}
+
+
+/* section */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6rem;
+  padding: 1.6rem;
+}
+
+.gallery-item {
+  overflow: hidden;
+  width: 50rem;
+}
+
+.gallery-item img {
+  display: block;
+  width: 100%;
+  transition: all 0.4s;
+}
+
+.gallery-item img:hover {
+  transform: scale(1.1);
+}
+
+.gallery-item figcaption {
+  margin-top: 2rem;
+  font-size: 3rem;
+  color: #555; /* Adjust color for better readability */
+}
+
+
+
+
+/*  */
+
+
+
+.testomonials-container{ 
+  padding: 9.6rem;
+}
+
+.testomonials { 
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 4.8rem;
+  column-gap: 8rem;
+}
+
+.testomonial-img {
+
+  margin-bottom: 1.2rem;
+}
+
+.testomonial-text {
+  font-size: 1.8rem;
+  line-height: 1.8;
+  margin-bottom: 1.6rem;
+}
+
+.testomonial-name {
+  font-size: 1.6rem;
+  color: #6f6f6f;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6rem;
+  padding: 1.6rem;
+}
+
+.gallery-item {
+  overflow: hidden;
+}
+
+.gallery-item img {
+  display: block;
+  width: 100%;
+  transition: all 0.4s;
+}
+
+.gallery-item img:hover {
+  transform: scale(1.1);
+}

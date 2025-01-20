@@ -1,0 +1,25 @@
+/***************/
+  /* Header */
+/***************/
+
+@media (max-width: 920px) {
+    .main-nav-list {
+        /*  */
+    }
+  
+    .header {
+      justify-content: space-between;
+    }
+
+    .logo {
+        width: 15rem;
+    }
+
+    .name {
+        font-size: 1.5rem;
+    }
+
+    .gallery-item figcaption {
+        font-size: 2rem;
+    }
+  }

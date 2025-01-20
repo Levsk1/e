@@ -1,4 +1,6 @@
-/* Header Styles */
+/***************/
+  /* Header */
+/***************/
 .header {
     display: flex;
     justify-content: space-between;
@@ -7,6 +9,13 @@
     height: 9.6rem;
     padding: 0 4.8rem;
 }
+
+
+.logo {
+  width: 25rem; 
+  height: auto;
+}
+
 
 .main-nav {
     display: flex;
@@ -17,6 +26,7 @@
 .main-nav-list {
     display: flex;
     list-style: none;
+    gap: 1rem;
     margin: 0;
     padding: 0;
 }
@@ -26,11 +36,11 @@
 }
 
 .name {
-    color: white;
-    font-size: 2rem;
     display: flex;
     align-items: center;
     transition: color 0.3s, transform 0.3s;
+    color: white;
+    font-size: 2rem;
 }
 
 .name:hover svg {
@@ -39,6 +49,11 @@
 
 .name:hover {
     color: #c0c0c0;
+}
+
+svg {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 /* Sticky Header */

@@ -2,12 +2,9 @@
   /* Header */
 /***************/
 
-@media (max-width: 920px) {
-    .main-nav-list {
-        /*  */
-    }
-  
-    .header {
+@media (max-width: 57.5em) {
+
+     .header {
       justify-content: space-between;
     }
 
@@ -22,4 +19,20 @@
     .gallery-item figcaption {
         font-size: 2rem;
     }
+    .ham-menu {
+      display: none; 
+    }
   }
+
+
+  @media (max-width: 48em) 
+    {
+      .ham-menu {
+        display: block; /* Show the menu only when the screen is 720px or smaller */
+      }
+  
+      .main-nav {
+        display: none;
+      }
+  } 
+  

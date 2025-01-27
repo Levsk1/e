@@ -1,5 +1,5 @@
 /***************/
-  /* Header */
+  /* Header 920PX*/
 /***************/
 
 @media (max-width: 57.5em) {
@@ -19,20 +19,52 @@
     .gallery-item figcaption {
         font-size: 2rem;
     }
-    .ham-menu {
-      display: none; 
-    }
   }
 
 
-  @media (max-width: 48em) 
-    {
-      .ham-menu {
-        display: block; /* Show the menu only when the screen is 720px or smaller */
-      }
+
+
+/***************/
+/* Header Ham-Menu 700PX */
+/***************/
+
+
+@media (max-width: 43.75em) 
+
+ {.ham-menu {
+      display: block; /* Show the hamburger menu at 700px or smaller */
+  }
+
+  .main-nav {
+      display: none; /* Hide the primary navigation */
+  }
   
-      .main-nav {
-        display: none;
-      }
-  } 
-  
+  .header {
+    justify-content: space-between; /* Adjust alignment for smaller screens */
+  }
+}
+
+
+
+@media (min-width: 43.76em) { /* Above 700px */
+  .ham-menu {
+      display: none; /* Hide the hamburger menu */
+  }
+
+  .main-nav {
+      display: block; /* Show the primary navigation */
+  }
+
+}
+
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column; /* Stack items vertically */
+    align-items: center;
+  }
+
+  .footer-links, .footer-map {
+    width: 100%; /* Make sections full width */
+  }
+}

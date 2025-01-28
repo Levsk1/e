@@ -1,0 +1,79 @@
+/***************/
+  /* Header 920PX*/
+/***************/
+
+@media (max-width: 57.5em) {
+
+     .header {
+      justify-content: space-between;
+    }
+
+    .logo {
+        width: 15rem;
+    }
+
+    .name {
+        font-size: 1.5rem;
+    }
+
+    .gallery-item figcaption {
+        font-size: 2rem;
+    }
+
+    .footer-logo img {
+      width: 20rem; /* Adjust the size as needed */
+      height: auto; /* Ensure the aspect ratio remains intact */
+    }
+  }
+
+
+/***************/
+/* Footer 768PX */
+/***************/
+
+
+
+  @media (max-width: 48em) {
+    .footer-container {
+      flex-direction: column; /* Stack items vertically */
+      align-items: center;
+    }
+  
+    .footer-links, .footer-map {
+      width: 100%; /* Make sections full width */
+    }
+  }
+
+
+
+/***************/
+/* Header Ham-Menu 700PX */
+/***************/
+
+
+@media (max-width: 43.75em) { /* 700px or smaller */
+  .ham-menu {
+      display: block; /* Show the hamburger menu */
+  }
+
+  .main-nav {
+      display: none; /* Hide the primary navigation */
+  }
+
+  .header {
+      justify-content: space-between; /* Adjust alignment for smaller screens */
+  }
+}
+
+@media (min-width: 43.76em) { /* Above 700px */
+  .ham-menu {
+      display: none; /* Hide the hamburger menu */
+  }
+
+  .main-nav {
+      display: flex; /* Show the primary navigation */
+  }
+}
+
+
+

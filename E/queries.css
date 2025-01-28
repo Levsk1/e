@@ -19,8 +19,30 @@
     .gallery-item figcaption {
         font-size: 2rem;
     }
+
+    .footer-logo img {
+      width: 20rem; /* Adjust the size as needed */
+      height: auto; /* Ensure the aspect ratio remains intact */
+    }
   }
 
+
+/***************/
+/* Footer 768PX */
+/***************/
+
+
+
+  @media (max-width: 48em) {
+    .footer-container {
+      flex-direction: column; /* Stack items vertically */
+      align-items: center;
+    }
+  
+    .footer-links, .footer-map {
+      width: 100%; /* Make sections full width */
+    }
+  }
 
 
 
@@ -29,22 +51,19 @@
 /***************/
 
 
-@media (max-width: 43.75em) 
-
- {.ham-menu {
-      display: block; /* Show the hamburger menu at 700px or smaller */
+@media (max-width: 43.75em) { /* 700px or smaller */
+  .ham-menu {
+      display: block; /* Show the hamburger menu */
   }
 
   .main-nav {
       display: none; /* Hide the primary navigation */
   }
-  
+
   .header {
-    justify-content: space-between; /* Adjust alignment for smaller screens */
+      justify-content: space-between; /* Adjust alignment for smaller screens */
   }
 }
-
-
 
 @media (min-width: 43.76em) { /* Above 700px */
   .ham-menu {
@@ -52,19 +71,9 @@
   }
 
   .main-nav {
-      display: block; /* Show the primary navigation */
-  }
-
-}
-
-
-@media (max-width: 768px) {
-  .footer-container {
-    flex-direction: column; /* Stack items vertically */
-    align-items: center;
-  }
-
-  .footer-links, .footer-map {
-    width: 100%; /* Make sections full width */
+      display: flex; /* Show the primary navigation */
   }
 }
+
+
+

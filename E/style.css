@@ -20,6 +20,7 @@
 .main-nav {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-grow: 1;
 }
 
@@ -57,7 +58,10 @@ svg {
 }
 
 
+/***************/
 /*off screen menu */
+/***************/
+
 
 .mobile-navigation {
   list-style: none;
@@ -92,6 +96,22 @@ nav {
   display: flex;
   background-color: rgb(red, green, blue);
 }
+
+
+
+.off-screen-menu ul.mobile-navigation {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-align: center;
+}
+
+.off-screen-menu ul.mobile-navigation li {
+  margin-bottom: 5rem; 
+  font-size: 2rem; 
+  color: white;
+}
+
 
 
 .ham-menu {
@@ -143,19 +163,28 @@ nav {
 
 
 
+/***************/
 /* Sticky Header */
-.sticky .header {
+/***************/
+
+
+.sticky  {
     position: fixed;
     top: 0;
     width: 100%;
     height: 8rem;
     padding: 0;
-    background-color: rgba(255, 255, 255, 0.97);
+    background-color: #606060;
     z-index: 999;
     box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.03);
 }
 
+
+
+/***************/
 /* Gallery Section */
+/***************/
+
 .gallery {
     margin: 0;
     padding: 0;
@@ -186,7 +215,12 @@ nav {
     color: #555;
 }
 
+
+/***************/
 /* Testimonials Section */
+/***************/
+
+
 .testimonials-container {
     padding: 9.6rem;
 }
@@ -212,7 +246,12 @@ nav {
     color: #6f6f6f;
 }
 
+
+/***************/
 /* General Utility Classes */
+/***************/
+
+
 .text-center {
     text-align: center;
 }
@@ -227,8 +266,11 @@ nav {
 
 
 
+/***************/
 /* Footer Styling */
-/* Footer Styling */
+/***************/
+
+
 .footer {
     background-color: #606060; /* Dark gray background */
     color: #fff; /* White text color */
@@ -272,13 +314,13 @@ nav {
   }
   
   .footer-map {
-    flex: 2; /* Make this section larger */
+    flex: 2; 
   }
   
   .footer-map iframe {
     width: 100%;
     border: none;
-    border-radius: 8px; /* Add rounded corners to the map */
+    border-radius: 8px; 
   }
   
   .footer-copyright {
@@ -288,16 +330,3 @@ nav {
     opacity: 0.8;
   }
   
-
-  @media (max-width: 768px) {
-    .footer-container {
-      flex-direction: column; /* Stack items vertically */
-      align-items: center;
-    }
-  
-    .footer-links, .footer-map {
-      width: 100%; /* Make sections full width */
-    }
-  }
-
- 

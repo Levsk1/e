@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>W202</title>
+    <div class="iframe-container"></div>
+
+</head>
+<body>
+<script>// Select the container where you want to add the iframe
+    const container = document.querySelector('.iframe-container');
+    
+    // Check if the container exists
+    if (container) {
+        // Create an iframe element
+        const iframe = document.createElement('iframe');
+    
+        // Set the iframe attributes
+        iframe.src = 'https://header.html'; // Replace with the desired URL
+        iframe.width = '100%'; // Set the width of the iframe
+        iframe.height = '500'; // Set the height of the iframe
+        iframe.frameborder = '0'; // Optional: remove border
+        iframe.allowfullscreen = true; // Optional: allow fullscreen mode
+    
+        // Append the iframe to the container
+        container.appendChild(iframe);
+    } else {
+        console.log("Container element not found.");
+    }
+    </script>
+</body>
+</html>

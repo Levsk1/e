@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ka">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,41 +7,22 @@
     <link rel="stylesheet" href="CSS/general.css">
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/queries.css">
+    <meta name="description" content="Mercedes-Benz W202 details and second-hand parts.">
 </head>
 <body>
 
-<script>document.addEventListener("DOMContentLoaded", function () {
-    function loadHTML(id, file) {
-        let element = document.getElementById(id);
-        if (!element) {
-            console.error(`Element with ID '${id}' not found.`);
-            return;
-        }
+    <!-- Header -->
+    <div id="header"></div>  
 
-        fetch(file)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.text();
-            })
-            .then(data => {
-                element.innerHTML = data;
-            })
-            .catch(error => console.error(`Error loading ${file}:`, error));
-    }
-
-    loadHTML("header", "header.html"); 
-    loadHTML("footer", "footer.html"); // Load the footer
-});
-</script>
-    <div id="header"></div>  <!-- The header will be loaded here -->
-
+    <!-- Main content goes here -->
     <main>
-        
+       
     </main>
 
-    <div id="footer"></div>  <!-- The footer will be loaded here -->
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <script src="js/script.js" defer></script>
 
 </body>
 </html>

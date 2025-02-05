@@ -42,6 +42,10 @@
     .footer-links, .footer-map {
       width: 100%; /* Make sections full width */
     }
+
+    .gallery {
+      grid-template-columns: repeat(2, 1fr);
+  }
   }
 
 
@@ -63,6 +67,9 @@
   .header {
       justify-content: space-between; /* Adjust alignment for smaller screens */
   }
+  .logo {
+    width: 12rem;
+}
 }
 
 @media (min-width: 43.76em) { /* Above 700px */
@@ -76,4 +83,15 @@
 }
 
 
+@media (max-width: 48em) {
+  .footer-container {
+      padding: 2rem;
+  }
+}
+
+@media (max-width: 30em) { /* 480px */
+  .gallery {
+      grid-template-columns: 1fr; /* Show 1 item per row */
+  }
+}
 

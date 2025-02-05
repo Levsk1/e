@@ -1,44 +1,104 @@
-const hamMenu = document.querySelector('.ham-menu');
-const offScreenMenu = document.querySelector('.off-screen-menu');
+document.addEventListener("DOMContentLoaded", function () {
+  function loadHTML(id, file, callback) {
+      let element = document.getElementById(id);
+      if (!element) {
+          console.error(`Element with ID '${id}' not found.`);
+          return;
+      }
 
-hamMenu.addEventListener('click', () => {
-    hamMenu.classList.toggle('active');
-    offScreenMenu.classList.toggle('active');
-});
-
-
-const header = document.querySelector('.header'); // Select your header element
-const stickyClass = 'sticky'; // Define the class that will make it sticky
-
-// Function to add the sticky class when scrolling
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 0) {
-    header.classList.add(stickyClass);
-  } else {
-    header.classList.remove(stickyClass);
+      fetch(file)
+          .then(response => {
+              if (!response.ok) {
+                  throw new Error(`HTTP error! Status: ${response.status}`);
+              }
+              return response.text();
+          })
+          .then(data => {
+              element.innerHTML = data;
+              callback && callback();
+          })
+          .catch(error => console.error(`Error loading ${file}:`, error));
   }
+
+  // Load header and footer
+  loadHTML("header", "header.html", function () {
+      attachMenuHandler(); // Run menu handler after header loads
+      makeHeaderSticky();  // Run sticky header after header loads
+  });
+  loadHTML("footer", "footer.html");
 });
 
+// Function to Attach Hamburger Menu Event
+function attachMenuHandler() {
+  const hamMenu = document.querySelector(".ham-menu");
+  const mobileMenu = document.querySelector(".off-screen-menu");
+  const body = document.body;
 
+  if (!hamMenu || !mobileMenu) {
+      console.error("Menu elements not found!");
+      return;
+  }
 
+  function toggleClass(element, className) {
+      element.classList.toggle(className);
+  }
 
-// Select the container where you want to add the iframe
-const container = document.querySelector('.iframe-container');
+  function toggleMenu() {
+      toggleClass(mobileMenu, "active");
+      toggleClass(hamMenu, "active");
+      body.style.overflow = mobileMenu.classList.contains("active") ? "hidden" : "auto";
+  }
 
-// Create an iframe element
-const iframe = document.createElement('iframe');
+  hamMenu.addEventListener("click", toggleMenu);
 
-// Set the iframe attributes
-iframe.src = 'https://www.example.com'; // Replace with the desired URL
-iframe.width = '100%'; // Set the width of the iframe
-iframe.height = '500'; // Set the height of the iframe
-iframe.frameborder = '0'; // Optional: remove border
-iframe.allowfullscreen = true; // Optional: allow fullscreen mode
+  document.addEventListener("click", (e) => {
+      if (!mobileMenu.contains(e.target) && !hamMenu.contains(e.target)) {
+          mobileMenu.classList.remove("active");
+          hamMenu.classList.remove("active");
+          body.style.overflow = "auto";
+      }
+  });
+}
 
-// Append the iframe to the container
-container.appendChild(iframe);
+// Function to Add Sticky Header on Scroll
+function makeHeaderSticky() {
+  const header = document.querySelector('.header');
+  if (!header) {
+      console.error("Header not found!");
+      return;
+  }
 
+  window.addEventListener('scroll', () => {
+      if (window.scrollY > 0) {
+          header.classList.add("sticky");
+      } else {
+          header.classList.remove("sticky");
+      }
+  });
+}
 
+// Function to Add iFrame Dynamically (Only If `.iframe-container` Exists)
+function insertIframe() {
+  const container = document.querySelector('.iframe-container');
+  if (!container) {
+      console.warn("iFrame container not found on this page.");
+      return;
+  }
 
+  const iframe = document.createElement('iframe');
+  iframe.src = 'https://www.example.com'; // Replace with actual URL
+  iframe.width = '100%';
+  iframe.height = '500';
+  iframe.frameBorder = '0';
+  iframe.allowFullscreen = true;
 
+  if (!iframe.src) {
+      console.error("Invalid iframe URL.");
+      return;
+  }
 
+  container.appendChild(iframe);
+}
+
+// Run iFrame Function (Only If Needed)
+insertIframe();

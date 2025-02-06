@@ -10,6 +10,13 @@
     padding: 0 4.8rem;
 }
 
+h1 {
+  text-align: center;
+  color: red;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+}
+
 
 .logo {
   width: 25rem; 
@@ -216,6 +223,12 @@ nav {
 }
 
 
+/* .img {
+  width: 100%;
+  height: auto;
+  max-width: 50rem;
+} */
+
 /***************/
 /* Testimonials Section */
 /***************/
@@ -274,7 +287,7 @@ nav {
 .footer {
     background-color: #606060; /* Dark gray background */
     color: #fff; /* White text color */
-    padding: 3rem 4rem; /* Footer padding */
+    margin-top: 10rem;
   }
   
   .footer-container {

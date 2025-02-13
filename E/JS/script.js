@@ -101,9 +101,33 @@ function insertIframe() {
 }
 
 
+console.log("Script loaded  successfully!");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // product page
+
+
+
 
 let listProductHTML = document.querySelector('.listProduct');
 let listCartHTML = document.querySelector('.listCart');

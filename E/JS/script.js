@@ -112,166 +112,69 @@ console.log("Script loaded  successfully!");
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-// product page
-
-
-
-
-let listProductHTML = document.querySelector('.listProduct');
-let listCartHTML = document.querySelector('.listCart');
-let iconCart = document.querySelector('.icon-cart');
-let iconCartSpan = document.querySelector('.icon-cart span');
-let body = document.querySelector('body');
-let closeCart = document.querySelector('.close');
-let products = [];
-let cart = [];
-
-
-iconCart.addEventListener('click', () => {
-    body.classList.toggle('showCart');
-})
-closeCart.addEventListener('click', () => {
-    body.classList.toggle('showCart');
-})
-
-    const addDataToHTML = () => {
-    // remove datas default from HTML
-
-        // add new datas
-        if(products.length > 0) // if has data
-        {
-            products.forEach(product => {
-                let newProduct = document.createElement('div');
-                newProduct.dataset.id = product.id;
-                newProduct.classList.add('item');
-                newProduct.innerHTML = 
-                `<img src="${product.image}" alt="">
-                <h2>${product.name}</h2>
-                <div class="price">$${product.price}</div>
-                <button class="addCart">Add To Cart</button>`;
-                listProductHTML.appendChild(newProduct);
-            });
-        }
-    }
-    listProductHTML.addEventListener('click', (event) => {
-        let positionClick = event.target;
-        if(positionClick.classList.contains('addCart')){
-            let id_product = positionClick.parentElement.dataset.id;
-            addToCart(id_product);
-        }
-    })
-const addToCart = (product_id) => {
-    let positionThisProductInCart = cart.findIndex((value) => value.product_id == product_id);
-    if(cart.length <= 0){
-        cart = [{
-            product_id: product_id,
-            quantity: 1
-        }];
-    }else if(positionThisProductInCart < 0){
-        cart.push({
-            product_id: product_id,
-            quantity: 1
-        });
-    }else{
-        cart[positionThisProductInCart].quantity = cart[positionThisProductInCart].quantity + 1;
-    }
-    addCartToHTML();
-    addCartToMemory();
-}
-const addCartToMemory = () => {
-    localStorage.setItem('cart', JSON.stringify(cart));
-}
-const addCartToHTML = () => {
-    listCartHTML.innerHTML = '';
-    let totalQuantity = 0;
-    if(cart.length > 0){
-        cart.forEach(item => {
-            totalQuantity = totalQuantity +  item.quantity;
-            let newItem = document.createElement('div');
-            newItem.classList.add('item');
-            newItem.dataset.id = item.product_id;
-
-            let positionProduct = products.findIndex((value) => value.id == item.product_id);
-            let info = products[positionProduct];
-            listCartHTML.appendChild(newItem);
-            newItem.innerHTML = `
-            <div class="image">
-                    <img src="${info.image}">
-                </div>
-                <div class="name">
-                ${info.name}
-                </div>
-                <div class="totalPrice">$${info.price * item.quantity}</div>
-                <div class="quantity">
-                    <span class="minus"><</span>
-                    <span>${item.quantity}</span>
-                    <span class="plus">></span>
-                </div>
-            `;
+document.addEventListener("DOMContentLoaded", function () {
+    function loadHTML(id, file) {
+      const element = document.getElementById(id);
+      if (!element) {
+        console.error(`Element with ID '${id}' not found.`);
+        return;
+      }
+  
+      fetch(file)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.text();
         })
+        .then((data) => {
+          element.innerHTML = data;
+        })
+        .catch((error) => console.error(`Error loading ${file}:`, error));
     }
-    iconCartSpan.innerText = totalQuantity;
-}
+  
+    // Dynamically load header and footer
+    loadHTML("header", document.getElementById("header").getAttribute("data-header"));
+    loadHTML("footer", document.getElementById("footer").getAttribute("data-footer"));
+  });
+  
 
-listCartHTML.addEventListener('click', (event) => {
-    let positionClick = event.target;
-    if(positionClick.classList.contains('minus') || positionClick.classList.contains('plus')){
-        let product_id = positionClick.parentElement.parentElement.dataset.id;
-        let type = 'minus';
-        if(positionClick.classList.contains('plus')){
-            type = 'plus';
-        }
-        changeQuantityCart(product_id, type);
+
+
+  function attachMenuHandler() {
+    const hamMenu = document.getElementById("menuBtn");
+    const mobileMenu = document.querySelector(".off-screen-menu");
+    const body = document.body;
+  
+    if (!hamMenu || !mobileMenu) {
+      console.error("Menu elements not found!");
+      return;
     }
-})
-const changeQuantityCart = (product_id, type) => {
-    let positionItemInCart = cart.findIndex((value) => value.product_id == product_id);
-    if(positionItemInCart >= 0){
-        let info = cart[positionItemInCart];
-        switch (type) {
-            case 'plus':
-                cart[positionItemInCart].quantity = cart[positionItemInCart].quantity + 1;
-                break;
-        
-            default:
-                let changeQuantity = cart[positionItemInCart].quantity - 1;
-                if (changeQuantity > 0) {
-                    cart[positionItemInCart].quantity = changeQuantity;
-                }else{
-                    cart.splice(positionItemInCart, 1);
-                }
-                break;
-        }
+  
+    function toggleMenu() {
+      // Toggle "active" class on both the button and the menu
+      hamMenu.classList.toggle("active");
+      mobileMenu.classList.toggle("active");
+  
+      // Toggle the aria-expanded attribute for accessibility
+      const isExpanded = hamMenu.getAttribute("aria-expanded") === "true";
+      hamMenu.setAttribute("aria-expanded", !isExpanded);
+  
+      // Prevent body scrolling when menu is open
+      body.style.overflow = mobileMenu.classList.contains("active") ? "hidden" : "auto";
     }
-    addCartToHTML();
-    addCartToMemory();
-}
-
-const initApp = () => {
-    // get data product
-    fetch('products.json')
-    .then(response => response.json())
-    .then(data => {
-        products = data;
-        addDataToHTML();
-
-        // get data cart from memory
-        if(localStorage.getItem('cart')){
-            cart = JSON.parse(localStorage.getItem('cart'));
-            addCartToHTML();
-        }
-    })
-}
-initApp();
+  
+    // Add click event to the hamburger menu button
+    hamMenu.addEventListener("click", toggleMenu);
+  
+    // Close menu when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!mobileMenu.contains(e.target) && !hamMenu.contains(e.target)) {
+        mobileMenu.classList.remove("active");
+        hamMenu.classList.remove("active");
+        hamMenu.setAttribute("aria-expanded", "false");
+        body.style.overflow = "auto";
+      }
+    });
+  }
+  

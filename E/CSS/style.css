@@ -169,6 +169,29 @@ nav {
 }
 
 
+.menu-open {
+  transform: translateX(0) !important;
+  transition: all 0.4s ease;
+}
+
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 9999;
+}
+
+
+
+#ham-menu {
+  display: none; /* It will be hidden by default on larger screens */
+  background: none;
+  border: none;
+  font-size: 3rem;
+  cursor: pointer;
+}
 
 /***************/
 /* Sticky Header */
@@ -343,3 +366,4 @@ nav {
     opacity: 0.8;
   }
   
+
